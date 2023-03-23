@@ -1,0 +1,11 @@
+#!/usr/bin/env sh
+. "$(dirname -- "$0")/_/husky.sh"
+
+cd frontend
+npm run lint
+npm run pretty
+
+if command -v fnm &> /dev/null
+then
+    fnm use
+fi
