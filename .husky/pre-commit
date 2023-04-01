@@ -9,3 +9,9 @@ if command -v fnm &> /dev/null
 then
     fnm use
 fi
+cd ../server
+
+if command -v fnm &> /dev/null
+then
+    fnm use
+fi
