@@ -1,17 +1,13 @@
 #!/usr/bin/env sh
 . "$(dirname -- "$0")/_/husky.sh"
 
+if command -v fnm &> /dev/null
+then
+    fnm use
+fi
+
 cd frontend
 npm run lint
 npm run pretty
 
-if command -v fnm &> /dev/null
-then
-    fnm use
-fi
-cd ../server
 
-if command -v fnm &> /dev/null
-then
-    fnm use
-fi
