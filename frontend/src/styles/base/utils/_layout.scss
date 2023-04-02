@@ -1,0 +1,21 @@
+@use './media-queries' as *;
+@use './../../variables/media' as *;
+
+.u-layout-container {
+    display: grid;
+    grid-column-gap: 1rem; // 16px
+    padding-right: 2rem; // 32px
+    padding-left: 2rem; // 32px
+    max-width: 94rem; // 1504px
+    margin-right: auto;
+    margin-left: auto;
+    grid-template-columns: repeat(4, 1fr); // 4 columns
+
+    @include respond-at($mobile-wide) {
+        grid-template-columns: repeat(8, 1fr); // 8 columns
+    }
+
+    @include respond-at($tablet) {
+        grid-template-columns: repeat(12, 1fr); // 12 columns
+    }
+}

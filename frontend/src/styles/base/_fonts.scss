@@ -1,1 +1,28 @@
+@use './../variables' as *;
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap');
+
+.h1 {
+    font-size: $font-size-xl;
+}
+
+.h2 {
+    font-size: $font-size-l;
+}
+
+.h3 {
+    font-size: $font-size-m;
+}
+
+.h4 {
+    font-size: $font-size;
+}
+
+.h5 {
+    font-size: $font-size-s;
+}
+
+.plain-text {
+    font-size: $font-size;
+}
+
+// -------------------------------------------------------------------

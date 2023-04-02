@@ -1,9 +1,9 @@
 import React, { FC } from 'react'
 import { Outlet } from 'react-router-dom'
-export const App: FC = () => {
+export const LayoutContainer: FC = () => {
     return (
-        <main>
+        <section className="u-layout-container">
             <Outlet />
-        </main>
+        </section>
     )
 }
