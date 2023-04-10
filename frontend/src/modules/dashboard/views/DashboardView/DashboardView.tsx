@@ -5,6 +5,8 @@ import { ICONS } from '~/shared/components/Icon/Icon.const'
 import { Button } from '~/shared/components/Button'
 import { PointsCard } from '~/dashboard/components/PointsCard'
 import { Navigation } from '~/dashboard/components/Navigation'
+import { Link } from 'react-router-dom'
+import { APP_PATHS } from '~/app/app.const'
 
 export const DashboardView: FC = () => {
     return (
@@ -29,16 +31,18 @@ export const DashboardView: FC = () => {
             >
                 Poor my coffee
             </Button>
-            <Button
-                onClick={() => console.log('buy more points')}
-                className="bg-light-grey w-full py-6 rounded-2xl mt-24"
-                iconEnabled={true}
-                iconPosition={'right'}
-                icon={ICONS.arrowRight}
-            >
-                Buy more
-            </Button>
 
+            <Link to={APP_PATHS.root}>
+                <Button
+                    onClick={() => console.log('buy more points')}
+                    className="bg-light-grey w-full py-6 rounded-2xl mt-24"
+                    iconEnabled={true}
+                    iconPosition={'right'}
+                    icon={ICONS.arrowRight}
+                >
+                    Buy more
+                </Button>
+            </Link>
             <Navigation />
         </div>
     )

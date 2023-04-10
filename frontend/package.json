@@ -8,8 +8,7 @@
         "build": "tsc && vite build",
         "preview": "vite preview",
         "pretty": "npx prettier --write .",
-        "lint": "npx eslint --ext .ts,.tsx,.json .",
-        "prepare": "husky install"
+        "lint": "npx eslint --ext .ts,.tsx,.json ."
     },
     "dependencies": {
         "@tanstack/react-query": "^4.28.0",
