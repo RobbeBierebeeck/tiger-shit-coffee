@@ -8,6 +8,9 @@ require("dotenv").config({ path: path.join(__dirname, ".env/local.env") });
 
 const indexRouter = require("./routes/index");
 const authRouter = require("./routes/auth");
+const coffeeRouter = require("./routes/coffee");
+
+const passport = require("./passport/passport");
 
 try {
   mongoose.connect(`${process.env.MONGODB_URI}`);
@@ -25,6 +28,11 @@ app.use(express.static(path.join(__dirname, "public")));
 
 app.use("/", indexRouter);
 app.use("/auth", authRouter);
+app.use(
+  "/coffee",
+  passport.authenticate("jwt", { session: false }),
+  coffeeRouter
+);
 
 //view enging setup
 app.set("views", path.join(__dirname, "views"));

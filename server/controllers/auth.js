@@ -60,7 +60,7 @@ const handleLogin = async (req, res) => {
       if (!result.error) {
         let token = jwt.sign(
           {
-            uid: result.user._id,
+            id: result.user._id,
           },
           process.env.JWT_SECRET
         );
