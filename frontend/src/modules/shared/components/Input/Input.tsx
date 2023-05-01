@@ -9,12 +9,8 @@ export const Input: FC<InputProps> = ({ type = 'text', onChange, label }) => {
 
     return (
         <>
-            <label className="flex flex-col gap-1.5">{label}</label>
-            <input
-                type={type}
-                className="w-50 px-4 py-2.5 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-                onChange={handleChange}
-            />
+            <label className="label">{label}</label>
+            <input type={type} className="input" onChange={handleChange} />
         </>
     )
 }

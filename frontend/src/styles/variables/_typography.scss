@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&family=Inter:wght@400;500&display=swap');
 // -------------------------------------------------------------------
 // :: FONT-SIZES
 // -------------------------------------------------------------------
@@ -6,4 +7,11 @@ $font-size-xl: 4rem; // 64px
 $font-size-l: 2.5rem; // 40px
 $font-size-m: 2rem; // 32px
 $font-size: 1rem; // 16px
-$font-size-s: 0.625rem; // 10px
+$font-size-s: 0.75rem; // 12px
+$font-size-xs: 0.625rem; // 10px
+
+// -------------------------------------------------------------------
+// :: FONT-FAMILY
+// -------------------------------------------------------------------
+$roboto-regular: 'Roboto';
+$inter-regular: 'Inter';
