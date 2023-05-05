@@ -1,0 +1,17 @@
+FROM node:hydrogen-alpine
+
+# Expose ports
+EXPOSE 6021 16021
+
+# Install dependencies
+RUN mkdir /app && chown node:node /app
+WORKDIR /app
+USER node
+COPY --chown=node:node ./server/package.json ./server/package-lock.json ./server/.npmrc ./
+RUN npm install
+
+RUN mkdir /app/server
+WORKDIR /app/server
+
+# Start application with live reload
+CMD sh -c "npm run dev"

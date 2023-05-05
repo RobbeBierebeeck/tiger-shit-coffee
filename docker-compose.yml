@@ -1,0 +1,37 @@
+version: '3.8'
+services:
+  server:
+    build:
+      context: .
+      dockerfile: Dockerfile.dev
+    working_dir: /app/server
+    depends_on:
+      - mongo
+    image: tiger-shit-coffee-module
+    container_name: tiger-shit-coffee-module
+    command: sh -c "cd /app/server && npm run dev"
+    env_file: ./server/.env/local.env
+    init: true
+    ports:
+      # App port
+      - 3000:3000
+      # Debug port
+      - 16034:16034
+    networks:
+      - tiger-shit-coffee-module
+    volumes:
+      # Delegated option for faster mounted volumes
+      - ./server:/app/server:delegated
+      # Because `npm install`
+      - ./server/package.json:/app/server/package.json
+      - ./server/package-lock.json:/app/server/package-lock.json
+      # Block local modules
+      - /app/server/node_modules
+      - /app/frontend/node_modules
+  mongo:
+    image: mongo
+    container_name: mongo
+    ports:
+      - 27017:27017
+networks:
+  tiger-shit-coffee-module:
