@@ -1,0 +1,7 @@
+@use './../variables' as *;
+
+.error {
+    font-size: $font-size-s;
+    font-family: $roboto-regular;
+    color: red;
+}
