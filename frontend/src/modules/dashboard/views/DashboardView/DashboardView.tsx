@@ -12,8 +12,10 @@ import { trimUsername } from '~/dashboard/helpers'
 import { useTransactionMutation } from '~/dashboard/hooks'
 import { AUTH_PATHS } from '~/auth/auth.const'
 import { ConfirmationModal } from '~/shared/components/ConfirmationModal'
+import Cookies from 'universal-cookie'
 
 export const DashboardView: FC = () => {
+    const cookies = new Cookies()
     const navigate = useNavigate()
     const { data: user, isFetching: isLoadingUser } = useUser()
     const { mutate: transaction } = useTransactionMutation()
@@ -27,8 +29,8 @@ export const DashboardView: FC = () => {
         setIsModalOpen(false)
     }
     const handleLogout = () => {
-        document.cookie =
-            'token=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;'
+        cookies.remove('token')
+
         navigate(AUTH_PATHS.login)
     }
     return (
