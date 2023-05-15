@@ -70,6 +70,7 @@ export const LoginView: FC = () => {
                                 <Button
                                     type={'submit'}
                                     iconEnabled={false}
+                                    className="bg-black text-white w-full py-6 rounded-2xl"
                                     onClick={() => {
                                         login(values)
                                     }}

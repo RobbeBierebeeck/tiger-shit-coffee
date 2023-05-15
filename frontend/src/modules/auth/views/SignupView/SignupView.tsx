@@ -90,6 +90,7 @@ export const SignupView: FC = () => {
                                 <Button
                                     type={'submit'}
                                     iconEnabled={false}
+                                    className="bg-black text-white w-full py-6 rounded-2xl"
                                     onClick={() => {
                                         signup({
                                             email: values.email,
