@@ -7,18 +7,21 @@ import { PointsCard } from '~/dashboard/components/PointsCard'
 import { Navigation } from '~/dashboard/components/Navigation'
 import { Link } from 'react-router-dom'
 import { ORDER_PATHS } from '~/order/order.const'
+import { useUser } from '~/app/hooks'
+import { trimUsername } from '~/dashboard/helpers'
 
 export const DashboardView: FC = () => {
+    const { data: user, isFetching: isLoadingUser } = useUser()
     return (
         <div className="col-span-4 lg:col-start-5 mt-28 mb-12 md:col-start-3 sm:col-start-1">
             <Heading type={HEADING_CONST.h1} style={HEADING_CONST.h1}>
-                👋 Hi Lukas
+                👋 Hi {trimUsername(user?.email || '')}
             </Heading>
             <Heading type={HEADING_CONST.h2} style={HEADING_CONST.h2}>
                 Let’s get you caffenaited!
             </Heading>
             <PointsCard
-                points={20}
+                points={user?.coffeePoints || 0}
                 title="🤑 coffee points"
                 className="mt-8 mb-6"
             />
