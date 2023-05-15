@@ -10,8 +10,8 @@ const { MONGO_URI, MONGO_PORT, MONGO_USER, MONGO_PASSWORD, MONGO_DB } =
 
 const indexRouter = require("./routes/index");
 const authRouter = require("./routes/auth");
-const coffeeRouter = require("./routes/coffee");
 const transactionsRouter = require("./routes/transactions");
+const machineStatusRouter = require("./routes/machineStatus");
 const passport = require("./passport/passport");
 mongoose
   .connect(
@@ -40,12 +40,7 @@ app.use(express.static(path.join(__dirname, "public")));
 
 app.use("/", indexRouter);
 app.use("/api/v1/auth", authRouter);
-app.use(
-  "/coffee",
-  passport.authenticate("jwt", { session: false }),
-  coffeeRouter
-);
-
+app.use("/api/v1/machine-status", machineStatusRouter);
 app.use(
   "/api/v1/transactions",
   passport.authenticate("jwt", { session: false }),
