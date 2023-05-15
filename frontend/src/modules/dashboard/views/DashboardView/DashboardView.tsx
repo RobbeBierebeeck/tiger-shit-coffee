@@ -5,18 +5,25 @@ import { ICONS } from '~/shared/components/Icon/Icon.const'
 import { Button } from '~/shared/components/Button'
 import { PointsCard } from '~/dashboard/components/PointsCard'
 import { Navigation } from '~/dashboard/components/Navigation'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import { ORDER_PATHS } from '~/order/order.const'
 import { useUser } from '~/app/hooks'
 import { trimUsername } from '~/dashboard/helpers'
 import { useTransactionMutation } from '~/dashboard/hooks'
+import { AUTH_PATHS } from '~/auth/auth.const'
 
 export const DashboardView: FC = () => {
+    const navigate = useNavigate()
     const { data: user, isFetching: isLoadingUser } = useUser()
     const { mutate: transaction } = useTransactionMutation()
 
     const handlePoorCoffee = () => {
         transaction({ userId: user?._id || '' })
+    }
+    const handleLogout = () => {
+        document.cookie =
+            'token=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;'
+        navigate(AUTH_PATHS.login)
     }
     return (
         <div className="col-span-4 lg:col-start-5 mt-28 mb-12 md:col-start-3 sm:col-start-1">
@@ -53,7 +60,7 @@ export const DashboardView: FC = () => {
                     Buy more
                 </Button>
             </Link>
-            <Navigation />
+            <Navigation onLogout={handleLogout} />
         </div>
     )
 }

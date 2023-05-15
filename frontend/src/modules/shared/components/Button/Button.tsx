@@ -16,11 +16,11 @@ export const Button: FC<ButtonProps> = ({
         <button
             type={type}
             onClick={onClick}
-            className={`btn flex gap-2.5 justify-center ${
+            className={`flex gap-2.5 justify-center px-0 items-center ${
                 iconPosition === 'left' ? 'flex-row' : 'flex-row-reverse'
             } ${className}`}
         >
-            {iconEnabled ? <Icon icon={icon} /> : null}
+            {iconEnabled ? <Icon classNames="shrink-0" icon={icon} /> : null}
             <span>{children}</span>
         </button>
     )
