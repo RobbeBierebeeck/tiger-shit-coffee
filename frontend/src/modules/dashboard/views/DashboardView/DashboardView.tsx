@@ -9,9 +9,15 @@ import { Link } from 'react-router-dom'
 import { ORDER_PATHS } from '~/order/order.const'
 import { useUser } from '~/app/hooks'
 import { trimUsername } from '~/dashboard/helpers'
+import { useTransactionMutation } from '~/dashboard/hooks'
 
 export const DashboardView: FC = () => {
     const { data: user, isFetching: isLoadingUser } = useUser()
+    const { mutate: transaction } = useTransactionMutation()
+
+    const handlePoorCoffee = () => {
+        transaction({ userId: user?._id || '' })
+    }
     return (
         <div className="col-span-4 lg:col-start-5 mt-28 mb-12 md:col-start-3 sm:col-start-1">
             <Heading type={HEADING_CONST.h1} style={HEADING_CONST.h1}>
@@ -27,7 +33,7 @@ export const DashboardView: FC = () => {
             />
             <Button
                 type="button"
-                onClick={() => console.log('poor my coffee')}
+                onClick={handlePoorCoffee}
                 className="bg-black text-white w-full py-6 rounded-2xl"
                 iconEnabled={true}
                 iconPosition={'right'}

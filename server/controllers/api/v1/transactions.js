@@ -24,6 +24,19 @@ const createTransaction = async (req, res) => {
     });
   }
 
+  const lastTransaction = await Transaction.findOne({
+    timestamp: {
+      $gte: new Date(new Date() - 5 * 60 * 1000),
+    },
+  });
+
+  if (lastTransaction) {
+    return res.status(102).json({
+      status: "error",
+      message: "Machine is busy",
+    });
+  }
+
   userById.coffeePoints = userById.coffeePoints - 1;
   await userById.save();
 
