@@ -4,6 +4,7 @@ import { NavigateFunction } from 'react-router-dom'
 import { APP_PATHS } from '~/app/app.const'
 import jwtDecode from 'jwt-decode'
 import { enqueueSnackbar } from 'notistack'
+import Cookies from 'universal-cookie'
 
 export const useLoginMutation = (
     queryClient: QueryClient,
@@ -12,7 +13,8 @@ export const useLoginMutation = (
     useMutation({
         mutationFn: authService.login,
         onSuccess: (response) => {
-            document.cookie = `token=${response.data.token}`
+            const cookies = new Cookies()
+            cookies.set('token', response.data.token, { path: '/' })
             queryClient.setQueryData(['user'], jwtDecode(response.data.token))
             navigate(APP_PATHS.root)
         },

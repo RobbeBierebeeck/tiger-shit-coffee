@@ -1,5 +1,6 @@
 import ky from 'ky'
 import { KyInstance } from 'ky/distribution/types/ky'
+import Cookies from 'universal-cookie'
 
 export const api: KyInstance = ky
     .create({
@@ -11,7 +12,7 @@ export const api: KyInstance = ky
                 (request) => {
                     request.headers.set(
                         'Authorization',
-                        `Bearer ${document.cookie.split('=')[1]}` || ''
+                        `Bearer ${new Cookies().get('token') || ''}`
                     )
                 },
             ],

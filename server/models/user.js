@@ -14,7 +14,7 @@ const userSchema = new Schema({
   },
   coffeePoints: {
     type: Number,
-    default: 0,
+    default: 1,
   },
   timestamp: {
     type: Date,
