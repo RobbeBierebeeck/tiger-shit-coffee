@@ -3,8 +3,14 @@ import { Formik } from 'formik'
 import { Input } from '~/shared/components/Input'
 import { Button } from '~/shared/components/Button'
 import { inputValidation } from '~/auth/views/SignupView/signup.const'
+import { useSignupMutation } from '~/auth/hooks'
+import { useNavigate } from 'react-router-dom'
+import { useQueryClient } from '@tanstack/react-query'
 
 export const SignupView: FC = () => {
+    const navigate = useNavigate()
+    const queryClient = useQueryClient()
+    const { mutate: signup } = useSignupMutation(queryClient, navigate)
     return (
         <>
             <Formik
@@ -84,7 +90,12 @@ export const SignupView: FC = () => {
                                 <Button
                                     type={'submit'}
                                     iconEnabled={false}
-                                    onClick={handleSubmit}
+                                    onClick={() => {
+                                        signup({
+                                            email: values.email,
+                                            password: values.password,
+                                        })
+                                    }}
                                 >
                                     Signup
                                 </Button>
