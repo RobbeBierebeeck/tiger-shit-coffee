@@ -5,18 +5,30 @@ const cookieParser = require("cookie-parser");
 const logger = require("morgan");
 const mongoose = require("mongoose");
 require("dotenv").config({ path: path.join(__dirname, ".env/local.env") });
+const { MONGO_URI, MONGO_PORT, MONGO_USER, MONGO_PASSWORD, MONGO_DB } =
+  process.env;
 
 const indexRouter = require("./routes/index");
 const authRouter = require("./routes/auth");
 const coffeeRouter = require("./routes/coffee");
 
 const passport = require("./passport/passport");
-
-try {
-  mongoose.connect(`${process.env.MONGODB_URI}`);
-} catch (error) {
-  handleError(error);
-}
+mongoose
+  .connect(
+    `mongodb://${MONGO_USER}:${MONGO_PASSWORD}@${MONGO_URI}:${MONGO_PORT}/${MONGO_DB}?authSource=admin`,
+    {
+      useNewUrlParser: true,
+      useUnifiedTopology: true,
+    }
+  )
+  .then(
+    () => {
+      console.log("Connected to MongoDB");
+    },
+    (err) => {
+      console.log("Error connecting to MongoDB", err);
+    }
+  );
 
 const app = express();
 

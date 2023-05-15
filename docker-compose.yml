@@ -29,8 +29,16 @@ services:
       - /app/server/node_modules
       - /app/frontend/node_modules
   mongo:
-    image: mongo
-    container_name: mongo
+    image: mongo:latest
+    networks:
+      - tiger-shit-coffee-module
+    container_name: tiger-shit-coffee-mongo
+    volumes:
+      - ./data/mongo:/data/db
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: tsc
+      MONGO_INITDB_ROOT_PASSWORD: tsc
+      MONGO_INITDB_DATABASE: tsc
     ports:
       - 27017:27017
 networks:

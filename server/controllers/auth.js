@@ -1,5 +1,6 @@
 const User = require("../models/user");
 const jwt = require("jsonwebtoken");
+const { JWT_SECRET } = process.env;
 const handleSignup = async (req, res) => {
   let { email, password } = req.body;
 
@@ -13,7 +14,7 @@ const handleSignup = async (req, res) => {
 
   const userExists = await User.findOne({ email: email });
 
-  if (userExists) {
+  if (!!userExists) {
     res.status(400).json({
       status: "error",
       error: "Email already exists",
@@ -46,7 +47,7 @@ const handleSignup = async (req, res) => {
             {
               id: result._id,
             },
-            process.env.JWT_SECRET
+            JWT_SECRET
           ),
         },
       });
@@ -62,7 +63,7 @@ const handleLogin = async (req, res) => {
           {
             id: result.user._id,
           },
-          process.env.JWT_SECRET
+          JWT_SECRET
         );
 
         return res.json({
