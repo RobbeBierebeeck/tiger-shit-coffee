@@ -24,6 +24,7 @@ export const OrderView: FC = () => {
                 How much you want?
             </Heading>
             <Button
+                type={'button'}
                 className="bg-light-grey w-full py-6 rounded-2xl mt-24"
                 iconEnabled={true}
                 iconPosition={'right'}
