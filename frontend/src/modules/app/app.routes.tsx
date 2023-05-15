@@ -4,7 +4,7 @@ import React from 'react'
 import { APP_PATHS } from '~/app/app.const'
 import { DASHBOARD_ROUTES } from '~/dashboard/dashboard.routes'
 import { ORDER_ROUTES } from '~/order/order.routes'
-import { SignupView } from '~/auth/views'
+import { LoginView, SignupView } from '~/auth/views'
 
 export const router = createBrowserRouter([
     {
@@ -15,5 +15,9 @@ export const router = createBrowserRouter([
     {
         path: APP_PATHS.signup,
         element: <SignupView />,
+    },
+    {
+        path: APP_PATHS.login,
+        element: <LoginView />,
     },
 ])
