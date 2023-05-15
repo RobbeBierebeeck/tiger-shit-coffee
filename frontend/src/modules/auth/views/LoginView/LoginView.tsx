@@ -6,6 +6,8 @@ import React, { FC } from 'react'
 import { useLoginMutation } from '~/auth/hooks'
 import { useNavigate } from 'react-router-dom'
 import { useQueryClient } from '@tanstack/react-query'
+import { AUTH_PATHS } from '~/auth/auth.const'
+import { Link } from 'react-router-dom'
 
 export const LoginView: FC = () => {
     const navigate = useNavigate()
@@ -77,6 +79,15 @@ export const LoginView: FC = () => {
                                 >
                                     Login
                                 </Button>
+                                <p className="pt-4">
+                                    Dont have an account? &nbsp;
+                                    <Link
+                                        to={`${AUTH_PATHS.signup}`}
+                                        className="text-blue-500"
+                                    >
+                                        Signup
+                                    </Link>
+                                </p>
                             </form>
                         </div>
                     </div>

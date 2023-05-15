@@ -4,8 +4,9 @@ import { Input } from '~/shared/components/Input'
 import { Button } from '~/shared/components/Button'
 import { inputValidation } from '~/auth/views/SignupView/signup.const'
 import { useSignupMutation } from '~/auth/hooks'
-import { useNavigate } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import { useQueryClient } from '@tanstack/react-query'
+import { AUTH_PATHS } from '~/auth/auth.const'
 
 export const SignupView: FC = () => {
     const navigate = useNavigate()
@@ -100,6 +101,15 @@ export const SignupView: FC = () => {
                                 >
                                     Signup
                                 </Button>
+                                <p className="pt-4">
+                                    Already have an account? &nbsp;
+                                    <Link
+                                        to={`${AUTH_PATHS.login}`}
+                                        className="text-blue-500"
+                                    >
+                                        Login
+                                    </Link>
+                                </p>
                             </form>
                         </div>
                     </div>
