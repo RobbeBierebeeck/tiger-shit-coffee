@@ -11,7 +11,7 @@ const { MONGO_URI, MONGO_PORT, MONGO_USER, MONGO_PASSWORD, MONGO_DB } =
 const indexRouter = require("./routes/index");
 const authRouter = require("./routes/auth");
 const coffeeRouter = require("./routes/coffee");
-
+const transactionsRouter = require("./routes/transactions");
 const passport = require("./passport/passport");
 mongoose
   .connect(
@@ -44,6 +44,12 @@ app.use(
   "/coffee",
   passport.authenticate("jwt", { session: false }),
   coffeeRouter
+);
+
+app.use(
+  "/api/v1/transactions",
+  passport.authenticate("jwt", { session: false }),
+  transactionsRouter
 );
 
 //view enging setup
