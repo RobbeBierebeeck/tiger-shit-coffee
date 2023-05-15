@@ -6,7 +6,6 @@ import { Button } from '~/shared/components/Button'
 import { PointsCard } from '~/dashboard/components/PointsCard'
 import { Navigation } from '~/dashboard/components/Navigation'
 import { Link } from 'react-router-dom'
-import { APP_PATHS } from '~/app/app.const'
 import { ORDER_PATHS } from '~/order/order.const'
 
 export const DashboardView: FC = () => {
@@ -24,6 +23,7 @@ export const DashboardView: FC = () => {
                 className="mt-8 mb-6"
             />
             <Button
+                type="button"
                 onClick={() => console.log('poor my coffee')}
                 className="bg-black text-white w-full py-6 rounded-2xl"
                 iconEnabled={true}
@@ -35,6 +35,7 @@ export const DashboardView: FC = () => {
 
             <Link to={ORDER_PATHS.root}>
                 <Button
+                    type="button"
                     className="bg-light-grey w-full py-6 rounded-2xl mt-24"
                     iconEnabled={true}
                     iconPosition={'right'}

@@ -1,0 +1,20 @@
+@use './../variables' as *;
+
+.label {
+    font-size: $font-size-s;
+    font-family: $roboto-regular;
+    padding-bottom: 0.5rem;
+}
+
+.input {
+    font-size: $font-size;
+    font-family: $roboto-regular;
+    color: $dark-grey;
+    box-sizing: border-box;
+    padding: 0.5rem 0.625rem;
+    width: 21.875rem;
+    height: 2.5rem;
+    background-color: $off-white;
+    border: 0.0625rem solid $light-silver;
+    border-radius: 0.5rem;
+}

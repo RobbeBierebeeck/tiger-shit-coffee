@@ -12,6 +12,11 @@ export default {
         extend: {
             colors: {
                 'light-grey': '#ececec',
+                'off-white': '#F6F6F6',
+                'light-silver': '#D7D7D7',
+            },
+            backgroundImage: {
+                'coffee-background': "url('./src/assets/images/coffee.png')",
             },
         },
     },

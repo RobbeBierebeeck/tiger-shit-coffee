@@ -9,12 +9,14 @@ export const Button: FC<ButtonProps> = ({
     iconEnabled = false,
     iconPosition = 'left',
     className = '',
+    type = 'button',
     onClick,
 }) => {
     return (
         <button
+            type={type}
             onClick={onClick}
-            className={`flex gap-2.5 justify-center ${
+            className={`btn flex gap-2.5 justify-center ${
                 iconPosition === 'left' ? 'flex-row' : 'flex-row-reverse'
             } ${className}`}
         >
