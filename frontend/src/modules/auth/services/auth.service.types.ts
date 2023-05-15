@@ -6,7 +6,7 @@ export interface SignupResponse {
     }
 }
 
-export interface SignupUser {
+export interface AuthUser {
     email: string
     password: string
 }

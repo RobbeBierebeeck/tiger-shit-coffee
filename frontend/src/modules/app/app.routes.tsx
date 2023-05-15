@@ -4,7 +4,7 @@ import React from 'react'
 import { APP_PATHS } from '~/app/app.const'
 import { DASHBOARD_ROUTES } from '~/dashboard/dashboard.routes'
 import { ORDER_ROUTES } from '~/order/order.routes'
-import { SignupView } from '~/auth/views'
+import { AUTH_ROUTES } from '~/auth/auth.routes'
 
 export const router = createBrowserRouter([
     {
@@ -12,8 +12,5 @@ export const router = createBrowserRouter([
         element: <App />,
         children: [DASHBOARD_ROUTES, ORDER_ROUTES],
     },
-    {
-        path: APP_PATHS.signup,
-        element: <SignupView />,
-    },
+    ...AUTH_ROUTES,
 ])
