@@ -20,7 +20,7 @@ export const DashboardView: FC = () => {
     const { data: user, isFetching: isLoadingUser } = useUser()
     const { mutate: transaction } = useTransactionMutation()
     const [isModalOpen, setIsModalOpen] = useState(false)
-
+    const points = user?.coffeePoints || 0
     const handlePoorCoffee = () => {
         setIsModalOpen(true)
     }
@@ -43,7 +43,7 @@ export const DashboardView: FC = () => {
                     Let’s get you caffenaited!
                 </Heading>
                 <PointsCard
-                    points={user?.coffeePoints || 0}
+                    points={points}
                     title="🤑 coffee points"
                     className="mt-8 mb-6"
                 />

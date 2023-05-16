@@ -8,9 +8,9 @@ const getMachineStatus = async (req, res) => {
     },
   });
 
-  let status = true;
+  let status = false;
   if (lastTransaction) {
-    status = false;
+    status = true;
   }
 
   res.json({
