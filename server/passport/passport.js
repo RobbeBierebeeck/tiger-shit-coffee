@@ -16,7 +16,6 @@ opts.secretOrKey = "jeiopfjiopJIOpfejfiop(fj?fel";
 
 passport.use(
   new JwtStrategy(opts, function (jwt_payload, done) {
-    console.log(jwt_payload.id);
     User.findOne({
       _id: jwt_payload.id,
     })
