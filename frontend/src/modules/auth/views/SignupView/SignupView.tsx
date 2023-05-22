@@ -6,6 +6,7 @@ import { inputValidation } from '~/auth/views/SignupView/signup.const'
 import { useSignupMutation } from '~/auth/hooks'
 import { useNavigate } from 'react-router-dom'
 import { useQueryClient } from '@tanstack/react-query'
+import { Loader } from '~/shared/components/Loader'
 
 export const SignupView: FC = () => {
     const navigate = useNavigate()
@@ -41,64 +42,66 @@ export const SignupView: FC = () => {
                                 onSubmit={handleSubmit}
                                 className="flex flex-col"
                             >
-                                <h1 className="h1 pb-8">Signup</h1>
-                                <Input
-                                    type="email"
-                                    label="Email"
-                                    name="email"
-                                    onChange={(value: string) => {
-                                        setFieldTouched('email', true)
-                                        setFieldValue('email', value)
-                                    }}
-                                    value={values.email}
-                                    error={errors.email}
-                                    touched={touched.email}
-                                />
+                                <Loader isLoading={true}>
+                                    <h1 className="h1 pb-8">Signup</h1>
+                                    <Input
+                                        type="email"
+                                        label="Email"
+                                        name="email"
+                                        onChange={(value: string) => {
+                                            setFieldTouched('email', true)
+                                            setFieldValue('email', value)
+                                        }}
+                                        value={values.email}
+                                        error={errors.email}
+                                        touched={touched.email}
+                                    />
 
-                                <Input
-                                    type="password"
-                                    label="Password"
-                                    name="password"
-                                    onChange={(value: string) => {
-                                        setFieldTouched('password', true)
-                                        setFieldValue('password', value)
-                                    }}
-                                    value={values.password}
-                                    error={errors.password}
-                                    touched={touched.password}
-                                />
+                                    <Input
+                                        type="password"
+                                        label="Password"
+                                        name="password"
+                                        onChange={(value: string) => {
+                                            setFieldTouched('password', true)
+                                            setFieldValue('password', value)
+                                        }}
+                                        value={values.password}
+                                        error={errors.password}
+                                        touched={touched.password}
+                                    />
 
-                                <Input
-                                    type="password"
-                                    label="Confirm password"
-                                    name="passwordConfirmation"
-                                    onChange={(value: string) => {
-                                        setFieldTouched(
-                                            'passwordConfirmation',
-                                            true
-                                        )
-                                        setFieldValue(
-                                            'passwordConfirmation',
-                                            value
-                                        )
-                                    }}
-                                    value={values.passwordConfirmation}
-                                    error={errors.passwordConfirmation}
-                                    touched={touched.passwordConfirmation}
-                                />
+                                    <Input
+                                        type="password"
+                                        label="Confirm password"
+                                        name="passwordConfirmation"
+                                        onChange={(value: string) => {
+                                            setFieldTouched(
+                                                'passwordConfirmation',
+                                                true
+                                            )
+                                            setFieldValue(
+                                                'passwordConfirmation',
+                                                value
+                                            )
+                                        }}
+                                        value={values.passwordConfirmation}
+                                        error={errors.passwordConfirmation}
+                                        touched={touched.passwordConfirmation}
+                                    />
 
-                                <Button
-                                    type={'submit'}
-                                    iconEnabled={false}
-                                    onClick={() => {
-                                        signup({
-                                            email: values.email,
-                                            password: values.password,
-                                        })
-                                    }}
-                                >
-                                    Signup
-                                </Button>
+                                    <Button
+                                        type={'submit'}
+                                        iconEnabled={false}
+                                        onClick={() => {
+                                            signup({
+                                                email: values.email,
+                                                password: values.password,
+                                            })
+                                        }}
+                                    >
+                                        Signup
+                                    </Button>
+                                </Loader>
                             </form>
                         </div>
                     </div>
