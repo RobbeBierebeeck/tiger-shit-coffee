@@ -51,11 +51,3 @@ jobs:
         run: |
           rm -rf /tmp/.buildx-cache
           mv /tmp/.buildx-cache-new /tmp/.buildx-cache
-  deploy:
-    needs: [ push_api_to_registry ]
-    runs-on: ubuntu-latest
-    steps:
-      - name: curl
-        uses: wei/curl@v1
-        with:
-          args: -X POST ${{ secrets.RANCHER_DEPLOY_URL }}
