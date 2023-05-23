@@ -52,4 +52,4 @@ jobs:
       - name: curl
         uses: wei/curl@v1
         with:
-          -X POST ${{ secrets.RANCHER_DEPLOY_URL }}
+          args: -X POST ${{ secrets.RANCHER_DEPLOY_URL }}
