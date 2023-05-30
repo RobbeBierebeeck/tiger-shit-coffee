@@ -1,4 +1,4 @@
-const Transaction = require("../../../models/Transaction");
+const Transaction = require("./../../../models/transaction");
 
 const getMachineStatus = async (req, res) => {
   //check if there is any transaction in the last 5 minutes

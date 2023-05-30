@@ -41,18 +41,12 @@ jobs:
         with:
           push: true
           context: .
-          file: ./server/Dockerfile
+          file: ./Dockerfile
           platforms: linux/amd64
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
-          cache-from: type=local,src=/tmp/.buildx-cache
-          cache-to: type=local,mode=max,dest=/tmp/.buildx-cache-new
-      - name: Move cache
-        run: |
-          rm -rf /tmp/.buildx-cache
-          mv /tmp/.buildx-cache-new /tmp/.buildx-cache
   deploy:
-    needs: [ push_api_to_registry ]
+    needs: [push_api_to_registry]
     runs-on: ubuntu-latest
     steps:
       - name: curl

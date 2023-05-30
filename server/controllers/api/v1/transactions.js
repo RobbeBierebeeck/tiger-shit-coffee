@@ -1,5 +1,5 @@
-const Transaction = require("../../../models/Transaction");
-const User = require("../../../models/user");
+const Transaction = require("./../../../models/transaction");
+const User = require("./../../../models/user");
 
 const createTransaction = async (req, res) => {
   let { userId } = req.body;
