@@ -1,8 +1,8 @@
 {
-  "rewrites": [
-    {
-      "source": "/api/(.*)",
-      "destination": "http://217.182.119.171:8083/api/$1"
-    }
-  ]
+    "rewrites": [
+        {
+            "source": "/api/(.*)",
+            "destination": "http://217.182.119.171:8083/api/$1"
+        }
+    ]
 }
