@@ -16,7 +16,7 @@ export default {
                 'light-silver': '#D7D7D7',
             },
             backgroundImage: {
-                'coffee-background': "url('/images/coffee-background.jpg')",
+                'coffee-background': "url('../images/coffee-background.png')",
             },
         },
     },
