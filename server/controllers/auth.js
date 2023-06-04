@@ -1,6 +1,5 @@
 const User = require("../models/user");
 const jwt = require("jsonwebtoken");
-const { json } = require("express");
 const { JWT_SECRET } = process.env;
 const handleSignup = async (req, res) => {
   let { email, password } = req.body;

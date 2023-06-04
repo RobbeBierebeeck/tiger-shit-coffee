@@ -1,13 +1,10 @@
 version: '3.8'
 services:
   server:
-    build:
-      context: .
-      dockerfile: Dockerfile.dev
     working_dir: /app/server
     depends_on:
       - mongo
-    image: tiger-shit-coffee-module
+    image: powdermountain/tsc-express
     container_name: tiger-shit-coffee-module
     #command: sh -c "cd /app/server && npm run dev"
     env_file: ./server/.env/local.env
