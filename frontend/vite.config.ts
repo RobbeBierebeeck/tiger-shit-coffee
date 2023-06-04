@@ -8,7 +8,7 @@ export default defineConfig({
     plugins: [tsconfigPaths(), react(), VitePWA()],
     server: {
         proxy: {
-            '/api/v1': 'http://localhost:3000',
+            '/api/v1': 'http://217.182.119.171:8083/',
             changeOrigin: 'true',
         },
     },

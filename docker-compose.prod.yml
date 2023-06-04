@@ -22,6 +22,8 @@ services:
     networks:
       - tiger-shit-coffee-module
     container_name: tiger-shit-coffee-mongo
+    ports:
+      - 8084:2717
     volumes:
       - /opt/tiger-shit-mongo:/data/db
     environment:
