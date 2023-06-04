@@ -40,7 +40,7 @@ export const DashboardView: FC = () => {
                     👋 Hi {trimUsername(user?.email || '')}
                 </Heading>
                 <Heading type={HEADING_CONST.h2} style={HEADING_CONST.h2}>
-                    Let’s get you caffenaited!
+                    Let&#39;s get you caffeinated!
                 </Heading>
                 <PointsCard
                     points={points}
