@@ -1,4 +1,4 @@
-import React, { FC, useState } from 'react'
+import React, { FC, useEffect, useState } from 'react'
 import { Heading } from '~/shared/components/Heading'
 import { HEADING_CONST } from '~/shared/components/Heading/Heading.const'
 import { ICONS } from '~/shared/components/Icon/Icon.const'
@@ -17,16 +17,22 @@ import Cookies from 'universal-cookie'
 export const DashboardView: FC = () => {
     const cookies = new Cookies()
     const navigate = useNavigate()
-    const { data: user, isFetching: isLoadingUser } = useUser()
+    const { data: user } = useUser()
     const { mutate: transaction } = useTransactionMutation()
     const [isModalOpen, setIsModalOpen] = useState(false)
-    const points = user?.coffeePoints || 0
+    const [points, setPoints] = useState(0)
+
+    useEffect(() => {
+        setPoints(user?.coffeePoints || 0)
+    }, [user])
+
     const handlePoorCoffee = () => {
         setIsModalOpen(true)
     }
     const handleConfirm = () => {
         transaction({ userId: user?._id || '' })
         setIsModalOpen(false)
+        setPoints(points ? points - 1 : 0)
     }
     const handleLogout = () => {
         cookies.remove('token')
