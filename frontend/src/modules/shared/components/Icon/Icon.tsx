@@ -1,4 +1,4 @@
-import React, { FC, cloneElement } from 'react'
+import { FC, cloneElement } from 'react'
 import { IconProps } from './Icon.types'
 import { ICONS_JSX } from './Icon.const'
 
